@@ -1,0 +1,12 @@
+pip install requests
+pip install beautifulsoup4
+pip install flask
+pip install flask-login
+pip install flask-sqlalchemy
+
+
+if wanting to add own javascript or CSS files, add in static folder and import to base html like so,
+<script>
+    text="text/javascript"
+    src="{{ url_for('static', filename='index.js') }}"
+</script>

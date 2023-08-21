@@ -1,0 +1,86 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content%}
+<form method="POST">
+    <h1 align="center"
+        class="display-1"
+        style="padding-left: 40px;
+            font-weight: 400;">
+            </span>
+            Filler Finder
+            <span style="display:inline-flex;
+                        width: 105px;
+                        height: 105px;">
+                <label style="padding-left: 5px;">&#x1F50D;</label>
+            </span>
+        </h1>
+    <br />
+    <div class="container-fluid" name="user_entry">
+        <div>
+            <label>Enter Name of Show</label>
+            <input type="text" 
+                class="form-control"
+                aria-label="Large"
+                aria-describedby="inputGroup-sizing-sm"
+                placeholder="Naruto" 
+                id="showName"
+                name="showName"/>
+        </div>
+        <br />
+        <div>
+            <label>Enter Episode Number</label>
+            <input 
+                type="text"
+                class="form-control"
+                aria-label="Large"
+                aria-describedby="inputGroup-sizing-sm"
+                placeholder="123" 
+                id="epsNum"
+                name="epsNum"/>
+        </div>
+        <br />
+            <button align="center"
+              type="submit"
+              class="btn btn-primary btn-lg btn-block">Find</button>
+        <br />
+        <br />
+        <ul class="list-group list-group-flush"
+            id="shows">
+        {% for show in user.shows %}
+            {% if show.status == 'Manga Canon' %}
+                <li class="list-group-item" 
+                    style="background-color: rgba(50, 225, 45, 0.800);"
+                    >
+                    Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    <button type="button" 
+                        class="close" 
+                        onClick="deleteShow({{ show.id }})">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            {% elif show.status == 'Filler' %}
+                <li class="list-group-item" 
+                    style="background-color: rgba(240, 40, 40, 0.885);">
+                    Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    <button 
+                        type="button"
+                        class="close"
+                        onClick= "deleteShow({{ show.id  }})">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+            {% elif show.status == 'Mixed Canon/Filler' %}
+                <li class="list-group-item" 
+                    style="background-color: rgb(245, 205, 60);">
+                    Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    <button 
+                        type="button"
+                        class="close"
+                        onClick= "deleteShow({{ show.id  }})">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+            {% endif %}
+            {% endfor %}
+        </li>
+        </ul>
+    </div>
+</form>
+{% endblock %}
