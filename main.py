@@ -13,22 +13,22 @@ if __name__=='__main__':
         user_episode = int(input(f"Enter Episode Number: "))
     
         URL = "https://www.animefillerlist.com/shows/" + user_show_fix
-        page = requests.get(URL)
-        soup = BeautifulSoup(page.content, "html.parser")
-        results = soup.find(class_="EpisodeList")
+        webpage = requests.get(URL)
+        soup = BeautifulSoup(webpage.content, "html.parser")
+        data = soup.find(class_="EpisodeList")
 
-        if isinstance(results, type(None)):
+        if isinstance(data, type(None)):
             raise TypeError
         else:
-            total_episodes = len(results.find_all('td', class_ = 'Date'))
+            total_episodes = len(data.find_all('td', class_ = 'Date'))
 
         if user_episode < 1 or total_episodes < user_episode:
             raise ValueError
 
-        canon_list = results.find_all(
+        canon_list = data.find_all(
             "td", string=lambda text: " canon" in text.lower()
         )
-        filler_mixed_list = results.find_all(
+        filler_mixed_list = data.find_all(
             "td", string=lambda text: "filler" in text.lower()
         )
 
