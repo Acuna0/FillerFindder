@@ -51,31 +51,45 @@
                 <li class="list-group-item" 
                     style="background-color: rgba(50, 225, 45, 0.800);"
                     >
-                    Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    <b>Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    </b>
                     <button type="button" 
                         class="close" 
                         onClick="deleteShow({{ show.id }})">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&crarr;</span>
+                    </button>
+            {% elif show.status == 'Anime Canon' %}
+                <li class="list-group-item" 
+                    style="background-color: rgba(180, 250, 50, 0.80);">
+                    <b>Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    </b>
+                    <button 
+                        type="button"
+                        class="close"
+                        onClick= "deleteShow({{ show.id  }})">
+                    <span aria-hidden="true">&crarr;</span>
                     </button>
             {% elif show.status == 'Filler' %}
                 <li class="list-group-item" 
                     style="background-color: rgba(240, 40, 40, 0.885);">
-                    Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    <b>Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    </b>
                     <button 
                         type="button"
                         class="close"
                         onClick= "deleteShow({{ show.id  }})">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&crarr;</span>
                     </button>
             {% elif show.status == 'Mixed Canon/Filler' %}
                 <li class="list-group-item" 
                     style="background-color: rgb(245, 205, 60);">
-                    Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    <b>Episode {{show.eps_num}} of {{ show.show_name }} "{{show.show_title}}" is {{show.status}}
+                    </b>
                     <button 
                         type="button"
                         class="close"
                         onClick= "deleteShow({{ show.id  }})">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&crarr;</span>
                     </button>
             {% endif %}
             {% endfor %}
