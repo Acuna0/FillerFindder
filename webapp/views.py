@@ -40,19 +40,25 @@ def home():
                 flash('That episode does not exists', category='error')
                 return render_template('home_page.html', user=current_user)
         
-        canon_list = results.find_all(
-            "td", string=lambda text: " canon" in text.lower()
+        manga_canon = results.find_all(
+            "td", string=lambda text: "manga canon" in text.lower()
         )
         filler_mixed_list = results.find_all(
             "td", string=lambda text: "filler" in text.lower()
         )
+        anime_canon = results.find_all(
+            "td", string=lambda text: "anime canon" in text.lower()
+        )
 
-        canon_list_elements = [
-            tr_element.parent for tr_element in canon_list
+        manga_canon_elements = [
+            tr_element.parent for tr_element in manga_canon
         ]
 
         filler_list_elements = [
             tr_element.parent for tr_element in filler_mixed_list
+        ]
+        anime_canon_elements = [
+            tr_element.parent for tr_element in anime_canon
         ]
 
         found_status = False
@@ -66,7 +72,16 @@ def home():
                     found_status = True
                     break
             if not found_status:
-                for element in canon_list_elements:
+                for element in anime_canon_elements:
+                    if str(eps_num) == element.find('td', class_ = "Number").text.strip():
+                        episode_type = element.find('td', class_ = "Type").text.strip()
+                        episode_title = element.find('td', class_ = "Title").text.strip()
+                        print(f'Episode {eps_num} of {show_name.title()} titled "{episode_title}"\n'
+                                f'is {episode_type}.')
+                        found_status = True
+                        break
+            if not found_status:
+                for element in manga_canon_elements:
                     if str(eps_num) == element.find('td', class_ = "Number").text.strip():
                         episode_type = element.find('td', class_ = "Type").text.strip()
                         episode_title = element.find('td', class_ = "Title").text.strip()
