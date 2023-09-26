@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/3cf0f411-55c7-4eb5-9617-3f9ac1f2df19/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/FillerFinder",
+    "appService.deploySubpath": "."
+}
