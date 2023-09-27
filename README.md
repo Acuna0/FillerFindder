@@ -7,7 +7,7 @@ FillerFinder is a web application with user authentication that scrapes websites
 the specific episode of the searched show is worth watching, or ok to be skipped to avoid confusion about the story line. Also can save time in the cases
 where a large majority of the show is not relevant to the main story line.
 
-# Link
+## Link
 Direct link to the web app hosted on Microsoft Azure -> <a href="fillerfinder2023.azurewebsites.net"> FillerFinder </a>
 
 
