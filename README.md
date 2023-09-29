@@ -8,7 +8,7 @@ the specific episode of the searched show is worth watching, or ok to be skipped
 where a large majority of the show is not relevant to the main story line.
 
 ## Link
-Direct link to the web app hosted on Microsoft Azure -> <a href="https://fillerfinder2023.azurewebsites.net/login?next=%2F"> FillerFinder </a>
+Direct link to the web app hosted on Microsoft Azure -> <a href="https://fillerfinder2023.azurewebsites.net/"> FillerFinder </a>
 
 
 <!-- GETTING STARTED -->
